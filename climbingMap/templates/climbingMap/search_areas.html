@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"
+/>
+
+{% block title %}
+<title>Climbing Beta!</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Climbing Area Home</h1>
+  <center>
+    {% if searched %}
+        <p>You Searched For {{ searched }}<p>
+        </br>
+        {% for area in areas %}
+            <a href="{% url 'area-detail' area.id %}">{{area}}<a> </br>
+        {% endfor %}
+    {% else %}
+        <h1> Nothing was entered. </h1>
+    {% endif  %}
+   
+    
+{% endblock %}
+
+ 

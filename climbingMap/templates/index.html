@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"
+/>
+
+{% block title %}
+<title>Climbing Beta!</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Climbing Area Home</h1>
+  <p>
+    Welcome to Climbing Areas, a website developed by
+    <em>Mozilla Developer Network</em>!
+  </p>
+  <h2>Dynamic content</h2>
+  <p>The database contains:</p>
+  <ul>
+    <li><strong>Climbing Areas:</strong> {{ num_areas }}</li>
+    <li><strong>Rock Types:</strong> {{ num_rock_types }}</li>
+    <li><strong>Granite Areas:</strong> {{ num_granite }}</li>
+    <li><strong>Sandstone Areas:</strong> {{ num_sand }}</li>
+    <li><strong>Limestone Areas:</strong> {{ num_lime }}</li>
+    <li><strong>Beginner Friendly:</strong> {{ num_beg }}</li>
+  </ul>
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+  <li><a href="{% url 'index' %}">Home</a></li>
+  <form class="d-flex" method=POST action="{% url 'search-areas' %}">
+    {% csrf_token %}
+    <input class="form-control me-2"
+      type="search" placeholder= "Search Areas" aria-label="Search" name="searched">
+      <button class="btn
+      btn-outline-secondary" type="submit">Search</button>
+  </form> 
+{% endblock %}
+
